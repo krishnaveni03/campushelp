@@ -1,0 +1,86 @@
+/* AdminDashboard.css */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .admin-main {
+    flex: 1;
+    padding: 2rem;
+    background: #f5f6fa;
+  }
+  
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .chart-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .quick-actions {
+    margin-top: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .filters-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .filters-row select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .image-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .image-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  .image-modal-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
+  }
+  
+  .image-modal-content .close-btn {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }

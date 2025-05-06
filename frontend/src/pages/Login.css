@@ -1,0 +1,82 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f0f2f5, #e4e7ec);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+}
+
+.login-card h1 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #1E3A8A;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  outline: none;
+}
+
+.primary-btn {
+  background-color: #1E3A8A;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.primary-btn:hover {
+  background-color: #16357B;
+}
+
+.role-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background: #f1f5f9;
+  color: #1E3A8A;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.role-btn.active {
+  background-color: #1E3A8A;
+  color: white;
+  border-color: #1E3A8A;
+  box-shadow: 0 0 8px rgba(30, 58, 138, 0.25);
+}

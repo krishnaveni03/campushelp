@@ -1,0 +1,49 @@
+/* RequestList.css */
+.request-list {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .request-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .request-images {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .request-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #eee;
+  }
+  
+  /* Add these at the end of RequestList.css */
+  .category-tag {
+    background: #e0e0e0;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+  
+  .status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: white;
+    display: inline-block;
+  }
+  
+  .status.open { background: #00B4D8; }
+  .status.in-progress { background: #5B3CC4; }
+  .status.resolved { background: #3A0CA3; }

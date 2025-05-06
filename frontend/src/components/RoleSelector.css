@@ -1,0 +1,31 @@
+/* src/components/RoleSelector.css */
+.role-selector {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    gap: 1rem;
+  }
+  
+  .role-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    max-width: 150px;
+  }
+  
+  .role-btn:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .role-btn.active {
+    background-color: #6a5acd; /* you can change this to blue or purple */
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
