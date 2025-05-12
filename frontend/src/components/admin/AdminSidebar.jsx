@@ -1,37 +1,40 @@
-const AdminSidebar = ({ activeTab, setActiveTab, onLogout }) => {
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../../styles/AdminSidebar.css';
+
+const AdminSidebar = ({ activeTab, setActiveTab }) => {
   return (
-    <aside className="admin-sidebar">
+    <nav className="admin-sidebar">
       <div className="sidebar-header">
-        <h2>CampusHelp Admin</h2>
+        <h3>CampusHelp Admin</h3>
       </div>
-      
-      <nav className="sidebar-nav">
-        <button
-          className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`}
-          onClick={() => setActiveTab('dashboard')}
-        >
-          Dashboard
-        </button>
-        <button
-          className={`nav-item ${activeTab === 'requests' ? 'active' : ''}`}
-          onClick={() => setActiveTab('requests')}
-        >
-          Requests
-        </button>
-        <button
-          className={`nav-item ${activeTab === 'announcements' ? 'active' : ''}`}
-          onClick={() => setActiveTab('announcements')}
-        >
-          Announcements
-        </button>
-      </nav>
-      
-      <div className="sidebar-footer">
-        <button onClick={onLogout} className="logout-btn">
-          Logout
-        </button>
-      </div>
-    </aside>
+      <ul className="sidebar-menu">
+        <li>
+          <button 
+            className={activeTab === 'dashboard' ? 'active' : ''}
+            onClick={() => setActiveTab('dashboard')}
+          >
+            Dashboard
+          </button>
+        </li>
+        <li>
+          <button 
+            className={activeTab === 'requests' ? 'active' : ''}
+            onClick={() => setActiveTab('requests')}
+          >
+            Requests
+          </button>
+        </li>
+        <li>
+          <button 
+            className={activeTab === 'announcements' ? 'active' : ''}
+            onClick={() => setActiveTab('announcements')}
+          >
+            Announcements
+          </button>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

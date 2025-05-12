@@ -1,12 +1,13 @@
-// src/pages/Login.jsx
-import './Login.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import RoleSelector from '../components/RoleSelector';
+import './Login.css';
 import Alert from '../components/common/Alert';
 
+const detectRole = (username) => {
+  return username.toLowerCase().includes('admin') ? 'admin' : 'student';
+};
+
 const Login = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
@@ -16,67 +17,63 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    
-    // Basic validation
     if (!credentials.username || !credentials.password) {
-      setError('Please fill in all fields');
+      setError('Please enter both username and password.');
       return;
     }
 
-    // Create mock user data
-    const mockUser = {
+    const role = detectRole(credentials.username); // Detect role based on username
+    const token = btoa(`${credentials.username}:${Date.now()}`);
+    const user = {
       id: Date.now(),
       name: credentials.username,
-      role: isAdmin ? 'admin' : 'student',
-      token: 'mock-token-' + Date.now(),
-      avatar: `https://i.pravatar.cc/150?u=${credentials.username}`,
+      role,
+      token: `mock-jwt-${token}`,
       lastLogin: new Date().toISOString()
     };
 
-    // Store in localStorage
-    localStorage.setItem('currentUser', JSON.stringify(mockUser));
-    
-    // Clear form
-    setCredentials({ username: '', password: '' });
-    
-    // Redirect based on role
-    navigate(isAdmin ? '/admin-dashboard' : '/student-dashboard');
+    localStorage.setItem('currentUser', JSON.stringify(user));
+
+    // Redirect based on detected role
+    navigate(role === 'admin' ? '/admin-dashboard' : '/student-dashboard');
   };
 
   return (
-    <div className="page-container">
-      <div className="login-card">
-        <h1>Welcome to CampusHelp</h1>
-        
-        <RoleSelector isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
+    <div className="page-wrapper">
+      <div className="login-wrapper">
+        <div className="login-left">
+          <h2 className="heading orange">Campus HelpDesk</h2>
+          <p className="subheading">Manage and track your complaints efficiently</p>
 
-        <form onSubmit={handleLogin}>
-          {error && <Alert message={error} type="error" />}
-          
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder={isAdmin ? "Admin ID" : "Student ID"}
-              value={credentials.username}
-              onChange={(e) => setCredentials(p => ({...p, username: e.target.value}))}
-              required
-            />
+          <h3 className="section-title">Login to your account</h3>
+          <p className="section-desc">Enter your credentials to access the complaint management system.</p>
+
+          <form onSubmit={handleLogin}>
+            {error && <Alert message={error} type="error" />}
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Username"
+                value={credentials.username}
+                onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                placeholder="Password"
+                value={credentials.password}
+                onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+              />
+            </div>
+            <button type="submit" className="primary-btn">Login</button>
+          </form>
+
+          <div className="info-box">
+            <strong>Welcome to CampusHelp</strong>
+            <p>Please enter your login credentials to access the system. If you need assistance, contact your campus IT support.</p>
           </div>
-          
-          <div className="form-group">
-            <input
-              type="password"
-              placeholder="Password"
-              value={credentials.password}
-              onChange={(e) => setCredentials(p => ({...p, password: e.target.value}))}
-              required
-            />
-          </div>
-          
-          <button type="submit" className="primary-btn">
-            {isAdmin ? 'Admin Login' : 'Student Login'}
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   );

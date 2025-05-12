@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
+import './AnnouncementManagement.css';
 
-const AnnouncementManagement = ({ announcements, onAddAnnouncement }) => {
+const AnnouncementManagement = ({ announcements, onAddAnnouncement, onDelete }) => {
   const [newAnnouncement, setNewAnnouncement] = useState('');
+  const [imageFile, setImageFile] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newAnnouncement.trim()) {
-      onAddAnnouncement(newAnnouncement);
+      const imageUrl = imageFile ? URL.createObjectURL(imageFile) : null;
+      onAddAnnouncement(newAnnouncement, imageUrl);
       setNewAnnouncement('');
+      setImageFile(null);
     }
   };
 
   return (
     <div className="card">
-      <h2>Manage Announcements</h2>
       <form onSubmit={handleSubmit} className="announcement-form">
         <textarea
           value={newAnnouncement}
@@ -21,7 +24,12 @@ const AnnouncementManagement = ({ announcements, onAddAnnouncement }) => {
           placeholder="Enter new announcement..."
           required
         />
-        <button type="submit">Post Announcement</button>
+        <input 
+          type="file" 
+          accept="image/*" 
+          onChange={(e) => setImageFile(e.target.files[0])}
+        />
+       <button type="submit" className="post-btn">Post Announcement</button>
       </form>
       
       <div className="current-announcements">
@@ -30,10 +38,16 @@ const AnnouncementManagement = ({ announcements, onAddAnnouncement }) => {
           <p>No announcements posted</p>
         ) : (
           <ul>
-            {announcements.map(announcement => (
+            {announcements.map((announcement) => (
               <li key={announcement.id}>
                 <p>{announcement.message}</p>
-                <button className="delete-btn">Delete</button>
+                {announcement.image && <img src={announcement.image} alt="Announcement Poster" style={{ width: '200px' }} />}
+                <button 
+                  className="delete-btn"
+                  onClick={() => onDelete(announcement.id)}
+                >
+                  Delete
+                </button>
               </li>
             ))}
           </ul>

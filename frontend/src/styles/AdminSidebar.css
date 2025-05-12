@@ -1,0 +1,46 @@
+.admin-sidebar {
+    background:#f97316;
+    color: white;
+    min-height: 100vh;
+    padding: 1.5rem;
+  }
+  
+  .sidebar-header {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(244, 140, 12, 0.1);
+  }
+  
+  .sidebar-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-menu li button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.8);
+    width: 100%;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .sidebar-menu li button:hover {
+    background: #f97316;
+    color: white;
+  }
+  
+  .sidebar-menu li button.active {
+    background:#f97316;
+    color: white;
+    font-weight: 500;
+  }

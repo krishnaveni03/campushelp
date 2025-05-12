@@ -1,0 +1,72 @@
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin: 1rem 0;
+  }
+  
+  .section-title {
+    color:  #ff7f50 #ff7f50;
+    margin-bottom: 1rem;
+  }
+  
+  .announcement-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .announcement-input {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    min-height: 100px;
+    font-size: 1rem;
+  }
+  
+.post-btn {
+  background-color: #ff7f50; /* Orange */
+  color: white;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.3s ease;
+}
+
+.post-btn:hover {
+  background-color: #ff4400; /* Darker shade of orange */
+}
+  
+  .current-announcements {
+    margin-top: 2rem;
+  }
+  
+  .announcement-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+  }
+  
+  .announcement-item {
+    margin-bottom: 1rem;
+  }
+  
+  .delete-btn {
+    background-color: #ef4444;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+  
+  .delete-btn:hover {
+    background-color: #b91c1c;
+  }
+  

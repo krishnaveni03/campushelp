@@ -1,0 +1,75 @@
+.campus-map-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.locations-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.location-card {
+  cursor: pointer;
+  border: 2px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f9f9f9;
+  transition: transform 0.3s;
+}
+
+.location-card:hover {
+  transform: scale(1.05);
+}
+
+.location-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+}
+
+.details-modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 350px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.details-img {
+  width: 100%;
+  border-radius: 8px;
+}
+.extra-image-container {
+  margin-top: 20px;
+  text-align: center;
+}
+.extra-img {
+  width: 500px;
+  height: 500px;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background-color: orange; /* Add orange color */
+  color: white; /* Make text visible */
+  border: none;
+  padding: 8px;
+  font-size: 16px;
+  /* border-radius: 50%; */
+  transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+  background-color: darkorange; /* Darker shade on hover */
+}

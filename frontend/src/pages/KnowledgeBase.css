@@ -1,91 +1,151 @@
+/* Overall container styles */
 .knowledge-base-container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+  background-color: #FFEBCD; /* Solid light orange background */
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+/* Header section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #ff7f50; /* Orange header text */
+}
+
+/* Back button styling */
+.back-btn {
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffa500;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-btn:hover {
+  background-color: #e69500;
+  transform: scale(1.05);
+}
+
+/* Content Styling */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Map container styling */
+.map-container iframe {
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Toggle button for key locations */
+.toggle-btn {
+  align-self: center;
+  background-color: #ffa500;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.toggle-btn:hover {
+  background-color: #e69500;
+  transform: scale(1.02);
+}
+
+/* Styles for key locations section */
+.key-locations {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.key-locations h2 {
+  margin-bottom: 1rem;
+  color: #ffa500;
+}
+
+.key-locations ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.key-locations li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    padding: 1rem 0;
-    border-bottom: 2px solid #eee;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .back-btn {
-    background: #4f46e5;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background 0.2s ease;
-  }
-  
-  .back-btn:hover {
-    background: #4338ca;
-  }
-  
-  .content {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-  
-  .faq-section {
-    margin-bottom: 2rem;
-  }
-  
-  .faq-item {
-    background: #f8fafc;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1rem 0;
-  }
-  
-  .faq-item h3 {
-    color: #1e293b;
-    margin-bottom: 0.5rem;
-  }
-  
-  .map-container {
-    margin: 2rem 0;
-  }
-  
-  .key-locations {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: #f8fafc;
-    border-radius: 8px;
-  }
-  
-  .department-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .department-card {
-    background: #f8fafc;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid #4f46e5;
-  }
-  
-  .department-card h2 {
-    margin-bottom: 1rem;
-    color: #1e293b;
-  }
-  
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-    
-    .content {
-      padding: 1rem;
-    }
-  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+
+/* Content styling */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* FAQ sections as cards */
+.faq-section {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section h2 {
+  margin-bottom: 1rem;
+  color: #ffa500;
+}
+
+/* FAQ items styling */
+.faq-item {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item h3 {
+  margin-bottom: 0.5rem;
+  color: #ff7f50;
+}
+
+.faq-item p {
+  margin: 0;
+  line-height: 1.5;
+}

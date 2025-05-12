@@ -1,31 +1,34 @@
 const AdminStats = ({ requests }) => {
-    const stats = {
-      total: requests.length,
-      open: requests.filter(r => r.status === 'Open').length,
-      inProgress: requests.filter(r => r.status === 'In Progress').length,
-      resolved: requests.filter(r => r.status === 'Resolved').length,
-    };
-  
-    return (
-      <div className="stats-container">
+  const counts = {
+    total: requests.length,
+    open: requests.filter(req => req.status === 'open').length,
+    inProgress: requests.filter(req => req.status === 'in-progress').length,
+    resolved: requests.filter(req => req.status === 'resolved').length,
+  };
+
+  return (
+    <div className="admin-stats">
+      <div className="stat-row">
         <div className="stat-card">
           <h3>Total Requests</h3>
-          <p className="stat-value">{stats.total}</p>
+          <p>{counts.total}</p>
         </div>
         <div className="stat-card">
           <h3>Open</h3>
-          <p className="stat-value open">{stats.open}</p>
+          <p>{counts.open}</p>
         </div>
+      </div>
+      <div className="stat-row">
         <div className="stat-card">
           <h3>In Progress</h3>
-          <p className="stat-value in-progress">{stats.inProgress}</p>
+          <p>{counts.inProgress}</p>
         </div>
         <div className="stat-card">
           <h3>Resolved</h3>
-          <p className="stat-value resolved">{stats.resolved}</p>
+          <p>{counts.resolved}</p>
         </div>
       </div>
-    );
-  };
-  
-  export default AdminStats;
+    </div>
+  );
+};
+export default AdminStats;

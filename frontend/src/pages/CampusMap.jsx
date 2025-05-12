@@ -1,38 +1,46 @@
-import { Link } from 'react-router-dom';
-import './KnowledgeBase.css';
+import { useState } from "react";
+import "./CampusMap.css";
+import adminImg from "./administration.png";
+import libraryImg from "./library.png";
+import studentImg from "./student_center.png";
+import extraImg from "./campusmap.png"; // New image
+
+const locations = [
+  { name: "Administration", img: adminImg, hours: "Mon-Fri: 9AM - 5PM | Sat-Sun: Closed" },
+  { name: "Library", img: libraryImg, hours: "Mon-Sat: 8AM - 9PM | Sun: 10AM - 6PM" },
+  { name: "Student Center", img: studentImg, hours: "Daily: 7AM - 11PM" }
+];
 
 const CampusMap = () => {
+  const [selectedLocation, setSelectedLocation] = useState(null);
+
   return (
-    <div className="knowledge-base-container">
-      <div className="header">
-        <h1>Campus Map</h1>
-        <Link to="/student-dashboard" className="back-btn">← Back to Dashboard</Link>
+    <div className="campus-map-container">
+      <h1>Campus Help Map</h1>
+
+      <div className="locations-grid">
+        {locations.map((location) => (
+          <div key={location.name} className="location-card" onClick={() => setSelectedLocation(location)}>
+            <img src={location.img} alt={location.name} className="location-img" />
+            <h3>{location.name}</h3>
+          </div>
+        ))}
       </div>
 
-      <div className="content">
-        <div className="map-container">
-          <iframe 
-            title="Campus Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.783330078342!2d151.1953558152106!3d-33.88388092659315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae1d486416bf%3A0xf8d6397db7a4a518!2sUniversity%20of%20Technology%20Sydney!5e0!3m2!1sen!2sau!4v1657842340517!5m2!1sen!2sau"
-            width="100%"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-          
-          <div className="key-locations">
-            <h2>Key Locations</h2>
-            <ul>
-              <li>Building 1 - Administration</li>
-              <li>Building 2 - Library</li>
-              <li>Building 3 - Student Center</li>
-              <li>Building 4 - Science Labs</li>
-            </ul>
-          </div>
-        </div>
+      {/* New Image Below Locations */}
+      <div className="extra-image-container">
+        <img src={extraImg} alt="Additional Location" className="extra-img" />
+        <h3>Campus Map</h3>
       </div>
+
+      {selectedLocation && (
+        <div className="details-modal fade-in">
+          <button onClick={() => setSelectedLocation(null)} className="close-btn">✖</button>
+          <h2>{selectedLocation.name}</h2>
+          <img src={selectedLocation.img} alt={selectedLocation.name} className="details-img" />
+          <p><strong>Opening Hours:</strong> {selectedLocation.hours}</p>
+        </div>
+      )}
     </div>
   );
 };
