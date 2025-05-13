@@ -1,4 +1,3 @@
-// components/student/FeedbackForm.jsx
 import { useState } from 'react';
 
 const FeedbackForm = ({ requestId, onSubmit, onClose }) => {
@@ -7,7 +6,7 @@ const FeedbackForm = ({ requestId, onSubmit, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(requestId, rating, comment);
+    onSubmit(requestId, rating, comment); // Submitting the collected feedback
   };
 
   return (

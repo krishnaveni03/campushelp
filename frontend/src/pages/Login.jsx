@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 import Alert from '../components/common/Alert';
 
@@ -68,6 +68,10 @@ const Login = () => {
             </div>
             <button type="submit" className="primary-btn">Login</button>
           </form>
+
+          <p className="signup-link">
+            Don't have an account? <Link to="/signup">Sign up here</Link>
+          </p>
 
           <div className="info-box">
             <strong>Welcome to CampusHelp</strong>

@@ -1,14 +1,44 @@
 import { useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import "leaflet/dist/leaflet.css";
+import L from 'leaflet';
+
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
 import "./CampusMap.css";
-import adminImg from "./administration.png";
-import libraryImg from "./library.png";
-import studentImg from "./student_center.png";
-import extraImg from "./campusmap.png"; // New image
+
+// Fix for the marker icon issue
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 const locations = [
-  { name: "Administration", img: adminImg, hours: "Mon-Fri: 9AM - 5PM | Sat-Sun: Closed" },
-  { name: "Library", img: libraryImg, hours: "Mon-Sat: 8AM - 9PM | Sun: 10AM - 6PM" },
-  { name: "Student Center", img: studentImg, hours: "Daily: 7AM - 11PM" }
+  {
+    id: 1,
+    name: "Administration",
+    position: [51.505, -0.09],
+    hours: "Mon-Fri: 9AM - 5PM | Sat-Sun: Closed",
+    description: "Main administrative building housing offices and support services."
+  },
+  {
+    id: 2,
+    name: "Library",
+    position: [51.506, -0.091],
+    hours: "Mon-Sat: 8AM - 9PM | Sun: 10AM - 6PM",
+    description: "Central library with study spaces and research resources."
+  },
+  {
+    id: 3,
+    name: "Student Center",
+    position: [51.507, -0.089],
+    hours: "Daily: 7AM - 11PM",
+    description: "Hub for student activities and services."
+  }
 ];
 
 const CampusMap = () => {
@@ -16,31 +46,50 @@ const CampusMap = () => {
 
   return (
     <div className="campus-map-container">
-      <h1>Campus Help Map</h1>
+      <h2>Campus Map</h2>
+      <div className="map-content">
+        <MapContainer
+          center={[51.505, -0.09]}
+          zoom={17}
+          scrollWheelZoom={true}
+          className="map-view"
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          {locations.map((location) => (
+            <Marker
+              key={location.id}
+              position={location.position}
+              eventHandlers={{
+                click: () => setSelectedLocation(location),
+              }}
+            >
+              <Popup>
+                <div className="location-popup">
+                  <h3>{location.name}</h3>
+                  <p>{location.description}</p>
+                  <p className="hours">{location.hours}</p>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
 
-      <div className="locations-grid">
-        {locations.map((location) => (
-          <div key={location.name} className="location-card" onClick={() => setSelectedLocation(location)}>
-            <img src={location.img} alt={location.name} className="location-img" />
-            <h3>{location.name}</h3>
-          </div>
-        ))}
-      </div>
-
-      {/* New Image Below Locations */}
-      <div className="extra-image-container">
-        <img src={extraImg} alt="Additional Location" className="extra-img" />
-        <h3>Campus Map</h3>
-      </div>
-
-      {selectedLocation && (
-        <div className="details-modal fade-in">
-          <button onClick={() => setSelectedLocation(null)} className="close-btn">✖</button>
-          <h2>{selectedLocation.name}</h2>
-          <img src={selectedLocation.img} alt={selectedLocation.name} className="details-img" />
-          <p><strong>Opening Hours:</strong> {selectedLocation.hours}</p>
+        <div className="location-list">
+          {locations.map((location) => (
+            <div
+              key={location.id}
+              className={`location-item ${selectedLocation?.id === location.id ? 'active' : ''}`}
+              onClick={() => setSelectedLocation(location)}
+            >
+              <h3>{location.name}</h3>
+              <p>{location.hours}</p>
+            </div>
+          ))}
         </div>
-      )}
+      </div>
     </div>
   );
 };
