@@ -160,9 +160,7 @@ const StudentDashboard = () => {
                 <Link to="/campus-map" className="kb-item">
                   <span className="icon"></span> Campus Map
                 </Link>
-                <Link to="/contact-directory" className="kb-item">
-                  <span className="icon"></span> Contact Directory
-                </Link>
+                
               </div>
             </div>
           </aside>

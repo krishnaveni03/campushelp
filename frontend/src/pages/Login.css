@@ -146,3 +146,13 @@ input:focus {
   display: block;
   margin-bottom: 0.25rem;     /* Space between bold text and its paragraph */
 }
+.signup-link {
+  color: #f97316;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+

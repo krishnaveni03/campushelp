@@ -67,24 +67,24 @@ const RequestManagement = ({ requests, onStatusUpdate }) => {
       </div>
 
       <div className="table-container">
-        <table>
+        <table className="request-table">
           <thead>
             <tr>
-              <th onClick={() => handleSort('id')}>
-                ID {sortConfig.key === 'id' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+              <th className="sortable" onClick={() => handleSort('id')}>
+                ID {sortConfig.key === 'id' && (sortConfig.direction === 'asc' ? '⬆️' : '⬇️')}
               </th>
-              <th onClick={() => handleSort('studentName')}>
-                Student {sortConfig.key === 'studentName' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+              <th className="sortable" onClick={() => handleSort('studentName')}>
+                Student {sortConfig.key === 'studentName' && (sortConfig.direction === 'asc' ? '⬆️' : '⬇️')}
               </th>
-              <th onClick={() => handleSort('category')}>
-                Category {sortConfig.key === 'category' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+              <th className="sortable" onClick={() => handleSort('category')}>
+                Category {sortConfig.key === 'category' && (sortConfig.direction === 'asc' ? '⬆️' : '⬇️')}
               </th>
               <th>Description</th>
-              <th onClick={() => handleSort('status')}>
-                Status {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+              <th className="sortable" onClick={() => handleSort('status')}>
+                Status {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '⬆️' : '⬇️')}
               </th>
-              <th onClick={() => handleSort('createdAt')}>
-                Date {sortConfig.key === 'createdAt' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+              <th className="sortable" onClick={() => handleSort('createdAt')}>
+                Date {sortConfig.key === 'createdAt' && (sortConfig.direction === 'asc' ? '⬆️' : '⬇️')}
               </th>
               <th>Actions</th>
             </tr>

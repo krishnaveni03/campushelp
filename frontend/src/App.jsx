@@ -23,7 +23,6 @@ function App() {
             <Route path="/student-dashboard" element={<StudentDashboard />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/campus-map" element={<CampusMap />} />
-            <Route path="/contact-directory" element={<ContactDirectory />} />
           </Route>
 
           {/* Admin Routes */}
